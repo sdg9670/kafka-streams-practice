@@ -1,0 +1,26 @@
+{
+	"name": "Java",
+	"image": "mcr.microsoft.com/devcontainers/java:21-bookworm",
+
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker": "latest",
+		"ghcr.io/devcontainers/features/github-cli": "latest"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"rangav.vscode-thunder-client",
+				"cweijan.vscode-office",
+				"GitHub.copilot",
+				"eamodio.gitlens",
+				"GitHub.vscode-pull-request-github",
+				"vscjava.vscode-java-pack",
+				"vscjava.vscode-gradle",
+				"vmware.vscode-boot-dev-pack"
+			]
+		}
+	},
+	"remoteEnv": {
+		"TZ": "Asia/Seoul"
+	}
+}

@@ -1,0 +1,40 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.projectlombok:lombok'
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'org.apache.kafka:kafka-streams'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+// docker compose up task
+task dockerUp(type: Exec) {
+	commandLine 'docker-compose', '-f', './docker/docker-compose.yml', 'up', '-d', '--force-recreate', '-V'
+}
+
+task dockerDown(type: Exec) {
+	commandLine 'docker-compose', '-f', './docker/docker-compose.yml', 'Down'
+}
+
